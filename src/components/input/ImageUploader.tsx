@@ -24,7 +24,7 @@ const SingleImageUploader: FC<SingleImageUploaderProps> = ({
   const [selectedImage, setSelectedImage] = useState<string | null>(
     field.value ?? null
   );
-
+  console.log(selectedImage, "jdkskjfklsdjflsdjlkj");
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
@@ -86,13 +86,23 @@ const SingleImageUploader: FC<SingleImageUploaderProps> = ({
       >
         {selectedImage ? (
           <>
-            <Image
-              width={100}
-              height={100}
-              alt="Selected"
-              src={selectedImage}
-              className="w-full h-full object-contain rounded-none"
-            />
+            {selectedImage.startsWith("blob:") ? (
+              <Image
+                width={100}
+                height={100}
+                alt="Selected"
+                src={selectedImage}
+                className="w-full h-full object-contain rounded-none"
+              />
+            ) : (
+              <img
+                width={100}
+                height={100}
+                alt="Selected"
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${selectedImage}`}
+                className="w-full h-full object-contain rounded-none"
+              />
+            )}
             <button
               onClick={(e) => {
                 e.stopPropagation(); // Prevent triggering file input

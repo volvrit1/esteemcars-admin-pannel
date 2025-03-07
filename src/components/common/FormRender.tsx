@@ -16,6 +16,9 @@ import ConfirmationModal from "../crud/ConfirmationModal";
 import StockTransferForm from "../crud/StockTransferForm";
 import ContactForm from "../crud/ContactForm";
 import LoanForm from "../crud/LoanForm";
+import NewsLetterForm from "../crud/NewsletterForm";
+import TestimonialsForm from "../crud/TestimonialsForm";
+import BlogForm from "../crud/Blogs";
 
 interface FormRendererProps {
   data: any;
@@ -63,6 +66,12 @@ const FormRenderer: React.FC<FormRendererProps> = (props: any) => {
       return <WarehouseForm {...props} />;
     case "Quotation":
       return <QuotationForm {...props} />;
+    case "Newsletter":
+      return <NewsLetterForm {...props} />;
+    case "Testimonials":
+      return <TestimonialsForm {...props} />;
+    case "Blogs":
+      return <BlogForm {...props} />;
     default:
       return <div>No Form Exist</div>;
   }

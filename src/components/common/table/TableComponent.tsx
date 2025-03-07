@@ -14,6 +14,8 @@ interface Column {
   sortable?: boolean;
   isCurrency?: string;
   status?: boolean;
+  isStatus?: boolean;
+  isClickable?:boolean;
 }
 
 interface OperationsAllowed {
@@ -51,6 +53,7 @@ const Table: React.FC<TableProps> = ({
 }) => {
   const [confirmation, setConfirmation] = useState(false);
   const [confirmationData, setConfirmationData] = useState<any>({});
+  const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
   const handleSort = (key: string) => {
     let direction: "asc" | "desc" | null = "asc";
     if (sort.key === key && sort.direction === "asc") {
@@ -134,7 +137,7 @@ const Table: React.FC<TableProps> = ({
     if (col.isDate && value) return dayjs(value).format("YYYY-MM-DD");
     if (col.isCurrency && value) return `${col.isCurrency} ${value}`;
     if (col.isPercent) return `${value} ${col.isPercent}`;
-    if (col.isStatus) return `${value} ${col.isPercent}`;
+    if (col.isStatus) return `${value}`;
 
     if (typeof value === "number") return value;
     if (typeof value === "boolean") return value.toString();
@@ -184,22 +187,37 @@ const Table: React.FC<TableProps> = ({
             filteredData.map((row: any, index: number) => (
               <tr
                 key={index}
-                className="border text-black border-infobg cursor-pointer"
+                className="border text-black border-infobg cursor-pointer" 
               >
                 {columns.map((col) => (
                   <td
                     key={col.key}
-                    className="text-sm border text-iconBlack whitespace-nowrap border-infobg px-4 py-3"
+                    onClick={col?.isClickable ? () => setIsStatusModalOpen(true) : () => {}}
+                    className={`text-sm border  whitespace-nowrap border-infobg px-4 py-3${col?.isClickable ?"text-green-600 font-bold":"text-iconBlack"}`}
                   >
                     {col.status ? (
                       <span
                         className={`flex justify-center items-center rounded-md ${
-                          formatRowValue(row, col)==="true"
+                          formatRowValue(row, col) === "true"
                             ? "bg-green-50 text-green-600"
                             : "bg-red-50 text-red-600"
                         } px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset`}
                       >
-                        {formatRowValue(row, col)==="true"?"Active":"InActive"}
+                        {formatRowValue(row, col) === "true"
+                          ? "Active"
+                          : "InActive"}
+                      </span>
+                    ) : col.isStatus ? (
+                      <span
+                        className={`flex justify-center items-center rounded-md ${
+                          formatRowValue(row, col) === "Approved"
+                            ? "bg-green-50 text-green-600"
+                            : formatRowValue(row, col) === "In Progress"
+                            ? "bg-yellow-50 text-yellow-600"
+                            : "bg-red-50 text-red-600"
+                        } px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset`}
+                      >
+                        {formatRowValue(row, col)}
                       </span>
                     ) : (
                       formatRowValue(row, col)
@@ -216,6 +234,8 @@ const Table: React.FC<TableProps> = ({
                       setFilteredData={setFilteredData}
                       setIsModalVisible={setIsModalVisible}
                       operationsAllowed={operationsAllowed}
+                      isStatusModalOpen={isStatusModalOpen}
+                      setIsStatusModalOpen={setIsStatusModalOpen}
                     />
                   </td>
                 )}

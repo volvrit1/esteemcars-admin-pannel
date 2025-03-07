@@ -234,4 +234,28 @@ export const tabs = [
     href: "/dashboard/payment",
     permission: "Manage Payment",
   },
+  {
+    id: 12,
+    icon: RiSecurePaymentFill,
+    label: "Manage Newsletter",
+    pageTitle: "All Newsletter",
+    href: "/dashboard/news-letter",
+    permission: "Manage Newsletter",
+  },
+  {
+    id: 13,
+    icon: RiSecurePaymentFill,
+    label: "Manage Testimonials",
+    pageTitle: "All Testimonials",
+    href: "/dashboard/testimonials",
+    permission: "Manage Testimonials",
+  },
+  {
+    id: 14,
+    icon: RiSecurePaymentFill,
+    label: "Manage Blogs",
+    pageTitle: "All Blogs",
+    href: "/dashboard/blogs",
+    permission: "Manage Blogs",
+  },
 ];

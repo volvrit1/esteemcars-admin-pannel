@@ -5,6 +5,8 @@ import { FaEye, FaEdit, FaTrash, FaFileInvoiceDollar } from "react-icons/fa";
 import { endpoints } from "../../../data/endpoints";
 import { Fetch, Delete } from "../../../hooks/apiUtils";
 import ConfirmationModal from "../../crud/ConfirmationModal";
+import UpdateStatusModal from "../../crud/UpdateStatusModal";
+import { RxUpdate } from "react-icons/rx";
 
 interface RowData {
   id: string;
@@ -15,6 +17,7 @@ interface OperationsAllowed {
   delete?: boolean;
   viewStock?: boolean;
   invoice?: boolean;
+  updateStatus?:boolean;
 }
 
 interface ActionsProps {
@@ -25,6 +28,8 @@ interface ActionsProps {
   operationsAllowed: OperationsAllowed;
   setPaginate: (pagination: any) => void;
   setIsModalVisible: (isVisible: boolean) => void;
+  isStatusModalOpen?:boolean;
+  setIsStatusModalOpen?:(isVisible: boolean) => void;
 }
 
 const Actions: React.FC<ActionsProps> = ({
@@ -35,6 +40,8 @@ const Actions: React.FC<ActionsProps> = ({
   setFilteredData,
   setIsModalVisible,
   operationsAllowed,
+  isStatusModalOpen,
+  setIsStatusModalOpen
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -92,10 +99,9 @@ const Actions: React.FC<ActionsProps> = ({
     const url = `${pathname}/${id}`;
     return router.push(url);
   };
-  const handleInvoice = async (id?: string) => {
+  const handleInvoice = (id?: string) => {
     if (!id) return;
-    const url = `${"/dashboard/orders/create-invoice"}/${id}`;
-    return router.push(url);
+    setIsStatusModalOpen(true)
   };
 
   const handleDeleteModal = () => {
@@ -144,6 +150,15 @@ const Actions: React.FC<ActionsProps> = ({
           <FaFileInvoiceDollar title="View Stock" />
         </button>
       )}
+        {operationsAllowed?.updateStatus && (
+        <button
+          onClick={() => handleInvoice(row.id)}
+          className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
+        >
+          <RxUpdate title="View Stock" />
+        </button>
+      )}
+       {isStatusModalOpen && <UpdateStatusModal setIsStatusModalOpen={setIsStatusModalOpen} data={row} />}
     </>
   );
 };

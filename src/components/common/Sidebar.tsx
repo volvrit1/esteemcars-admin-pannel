@@ -60,6 +60,45 @@ const Sidebar: React.FC = () => {
         create: true,
         update: true,
         delete: true,
+        updateStatus:true,
+      },
+    },
+    {
+      module: "Manage Newsletter",
+      access: {
+        read: true,
+        write: true,
+        update: true,
+        delete: true,
+      },
+    },
+    {
+      module: "Manage Testimonials",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },
+    {
+      module: "Manage Testimonials",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },  {
+      module: "Manage Blogs",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
       },
     },
   ];

@@ -71,7 +71,7 @@ const ImageUpload = ({
               alt="Selected"
               width={200}
               height={100}
-              src={selectedImage.includes("http") ? selectedImage : ""}
+              src={selectedImage.includes("http") ? selectedImage : `${process.env.NEXT_PUBLIC_BASE_URL}${selectedImage}`}
               className="w-full h-full object-contain rounded-lg"
             />
             <button

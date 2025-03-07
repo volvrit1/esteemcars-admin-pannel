@@ -2,8 +2,9 @@
 
 import AuthGuard from "../../components/AuthGuard";
 import Wrapper from "../../components/common/Wrapper";
+import Home from "../../components/dashboard/Home";
 import Summary from "../../components/dashboard/Summary";
-import Home from "../page";
+
 
 
 const Dashboard: React.FC = () => {
@@ -11,7 +12,7 @@ const Dashboard: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <div>
-          {/* <Home /> */}
+          <Home />
           {/* <Summary /> */}
         </div>
       </Wrapper>
