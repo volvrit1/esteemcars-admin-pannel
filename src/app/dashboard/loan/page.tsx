@@ -8,10 +8,10 @@ import { useAuth } from "../../../context/AuthContext";
 import { endpoints } from "../../../data/endpoints";
 import { getAccessPoints } from "../../../hooks/general";
 import useFetch from "../../../hooks/useFetch";
-
+ 
 const columns = [
   { key: "id", label: "Loan Query ID", sortable: true },
-  { key: "loanQueryNumber", label: "Loan Query Number", sortable: true },
+  { key: "loanQueryNumber", label: "Loan Query Number", sortable: true,isClickable:true },
   { key: "userId", label: "User ID", sortable: true },
   { key: "leadId", label: "Lead ID" },
   { key: "userType", label: "User Type", sortable: true },
@@ -45,7 +45,7 @@ const columns = [
   { key: "companyAddress", label: "Company Address" },
   { key: "typeOfEmployee", label: "Type of Employee" },
   { key: "dateOfJoining", label: "Date of Joining", isDate: true },
-  { key: "status", label: "Status", sortable: true,status:true },
+  { key: "status", label: "Status", sortable: true,isStatus:true },
   { key: "comments", label: "Comments" },
   { key: "createdAt", label: "Created At", sortable: true, isDate: true },
   { key: "updatedAt", label: "Updated At", sortable: true, isDate: true },

@@ -153,6 +153,22 @@ export const endpoints: Record<
     fetchAll: "api/item-transfer/", // to fetch all products
     operations: operations,
   },
+  Testimonials: {
+    create: "api/testimonial", // to create a product
+    read: "api/testimonial/", // to get a product
+    update: `api/testimonial/`, // to update a product
+    delete: "api/testimonial/", // to delete a product
+    fetchAll: "api/testimonial/", // to fetch all products
+    operations: operations,
+  },
+  Newsletter: {
+    create: "api/news-letter-email", // to create a product
+    read: "api/news-letter-email/ef", // to get a product
+    update: `api/news-letter-email/`, // to update a product
+    delete: "api/news-letter-email/", // to delete a product
+    fetchAll: "api/news-letter-email/", // to fetch all products
+    operations: operations,
+  },
   Warehouse: {
     create: "api/warehouse", // to create a product
     read: "api/warehouse/", // to get a product
@@ -160,6 +176,14 @@ export const endpoints: Record<
     delete: "api/warehouse/", // to delete a product
     fetchAll: "api/warehouse/", // to fetch all products
     operations: { ...operations, viewStock: true },
+  },
+  Blogs: {
+    create: "api/blog", // to create a contact-us
+    delete: "api/blog/", // to delete a contact-us
+    update: "api/blog/", // to update a contact-us
+    read: "api/blog/", // to get a contact-us
+    fetchAll: "api/blog/", // to fetch all contact-us
+    operations: operations,
   },
 };
 
