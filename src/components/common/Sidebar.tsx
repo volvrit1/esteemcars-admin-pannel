@@ -57,10 +57,20 @@ const Sidebar: React.FC = () => {
       access: {
         read: true,
         write: true,
-        create: true,
         update: true,
         delete: true,
-        updateStatus:true,
+        updateStatus: true,
+      },
+    },
+    {
+      module: "Manage Loan Status",
+      access: {
+        read: true,
+        write:true,
+        create:true,
+        update: true,
+        delete: true,
+        updateStatus: true,
       },
     },
     {
@@ -91,8 +101,40 @@ const Sidebar: React.FC = () => {
         update: true,
         delete: true,
       },
-    },  {
+    },
+    {
       module: "Manage Blogs",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },
+
+    {
+      module: "Manage Faqs",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },
+    {
+      module: "Manage Banners",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },
+    {
+      module: "Manage Sections",
       access: {
         read: true,
         write: true,
@@ -138,13 +180,15 @@ const Sidebar: React.FC = () => {
               <Link
                 href={tab?.href}
                 aria-label={tab?.label}
-                onMouseEnter={() => {
+                onClick={() => {
+                  if (list?.list.length > 0 && list?.tab === tab?.permission)
+                    return showList({ tab: "", list: [] });
                   if (tab?.tabs && tab?.tabs.length > 0)
                     showList({ tab: tab?.permission, list: tab?.tabs });
                 }}
                 className={`py-3 pl-5 mr-auto w-[95%] pr-2 text-sm cursor-pointer hover:bg-secondary transition rounded-r-full text-info flex justify-between gap-2 items-center border-primary hover:text-white ${
                   pathname === tab?.href &&
-                  "bg-secondary rounded-r-full text-white font-semibold"
+                  "bg-white/20 rounded-r-full text-white font-semibold"
                 }`}
               >
                 <span className="flex gap-2 items-center">
@@ -170,7 +214,7 @@ const Sidebar: React.FC = () => {
                           href={tabChild?.href}
                           key={`index+${index}`}
                           aria-label={tabChild?.label}
-                          className="w-full text-sm text-info pl-10 gap-2 py-3 flex items-center hover:bg-secondary hover:text-white"
+                          className="w-full text-xs text-info pl-7 gap-2 py-3 flex items-center hover:bg-white/20 hover:text-white"
                         >
                           <Icon className="text-base" /> {tabChild?.label}
                         </Link>

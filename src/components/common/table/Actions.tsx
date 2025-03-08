@@ -17,7 +17,7 @@ interface OperationsAllowed {
   delete?: boolean;
   viewStock?: boolean;
   invoice?: boolean;
-  updateStatus?:boolean;
+  updateStatus?: boolean;
 }
 
 interface ActionsProps {
@@ -28,8 +28,8 @@ interface ActionsProps {
   operationsAllowed: OperationsAllowed;
   setPaginate: (pagination: any) => void;
   setIsModalVisible: (isVisible: boolean) => void;
-  isStatusModalOpen?:boolean;
-  setIsStatusModalOpen?:(isVisible: boolean) => void;
+  isStatusModalOpen?: boolean;
+  setIsStatusModalOpen?: (isVisible: boolean) => void;
 }
 
 const Actions: React.FC<ActionsProps> = ({
@@ -41,7 +41,7 @@ const Actions: React.FC<ActionsProps> = ({
   setIsModalVisible,
   operationsAllowed,
   isStatusModalOpen,
-  setIsStatusModalOpen
+  setIsStatusModalOpen,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -94,6 +94,17 @@ const Actions: React.FC<ActionsProps> = ({
     }
   };
 
+  const fetchFilterData = async () => {
+    const fetchEndpoint = endpoints[type]?.fetchAll;
+    const response: any = await Fetch(fetchEndpoint, {}, 5000, true, false);
+
+    if (response?.success) {
+      setShowDeleteModal(false);
+      setFilteredData(response?.data?.result);
+      setPaginate(response?.data?.pagination);
+    } else window.location.reload();
+  };
+
   const handleView = async (id?: string) => {
     if (!id) return;
     const url = `${pathname}/${id}`;
@@ -101,7 +112,7 @@ const Actions: React.FC<ActionsProps> = ({
   };
   const handleInvoice = (id?: string) => {
     if (!id) return;
-    setIsStatusModalOpen(true)
+    setIsStatusModalOpen(true);
   };
 
   const handleDeleteModal = () => {
@@ -150,7 +161,7 @@ const Actions: React.FC<ActionsProps> = ({
           <FaFileInvoiceDollar title="View Stock" />
         </button>
       )}
-        {operationsAllowed?.updateStatus && (
+      {operationsAllowed?.updateStatus && (
         <button
           onClick={() => handleInvoice(row.id)}
           className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
@@ -158,7 +169,13 @@ const Actions: React.FC<ActionsProps> = ({
           <RxUpdate title="View Stock" />
         </button>
       )}
-       {isStatusModalOpen && <UpdateStatusModal setIsStatusModalOpen={setIsStatusModalOpen} data={row} />}
+      {isStatusModalOpen && (
+        <UpdateStatusModal
+        fetchData={fetchFilterData}
+          setIsStatusModalOpen={setIsStatusModalOpen}
+          data={row}
+        />
+      )}
     </>
   );
 };

@@ -19,6 +19,8 @@ import LoanForm from "../crud/LoanForm";
 import NewsLetterForm from "../crud/NewsletterForm";
 import TestimonialsForm from "../crud/TestimonialsForm";
 import BlogForm from "../crud/Blogs";
+import FaqsForm from "../crud/FaqsForm";
+import BannersForm from "../crud/BannersForm";
 
 interface FormRendererProps {
   data: any;
@@ -68,8 +70,12 @@ const FormRenderer: React.FC<FormRendererProps> = (props: any) => {
       return <QuotationForm {...props} />;
     case "Newsletter":
       return <NewsLetterForm {...props} />;
+    case "Faqs":
+      return <FaqsForm {...props} />;
     case "Testimonials":
       return <TestimonialsForm {...props} />;
+    case "Banners":
+      return <BannersForm {...props} />;
     case "Blogs":
       return <BlogForm {...props} />;
     default:

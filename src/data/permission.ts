@@ -30,10 +30,20 @@ export const userPermissions = [
     module: "Manage Loan",
     access: {
       read: true,
+      update: true,
+      delete: true,
+      updateStatus: true,
+    },
+  },
+  {
+    module: "Manage Loan Status",
+    access: {
+      read: true,
+      write: true,
       create: true,
       update: true,
       delete: true,
-      updateStatus:true,
+      updateStatus: true,
     },
   },
   {
@@ -75,6 +85,36 @@ export const userPermissions = [
   },
   {
     module: "Manage Blogs",
+    access: {
+      read: true,
+      write: true,
+      create: true,
+      update: true,
+      delete: true,
+    },
+  },
+  {
+    module: "Manage Faqs",
+    access: {
+      read: true,
+      write: true,
+      create: true,
+      update: true,
+      delete: true,
+    },
+  },
+  {
+    module: "Manage Banners",
+    access: {
+      read: true,
+      write: true,
+      create: true,
+      update: true,
+      delete: true,
+    },
+  },
+  {
+    module: "Manage Sections",
     access: {
       read: true,
       write: true,

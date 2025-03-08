@@ -97,6 +97,30 @@ export const endpoints: Record<
     fetchAll: "api/loan-query", // to fetch all leads
     operations: operations,
   },
+  ApprovedLoan: {
+    create: "api/loan-query", // to create a lead
+    read: "api/loan-query/", // to get a lead
+    update: `api/loan-query/`, // to update a lead
+    delete: "api/loan-query/", // to delete a lead
+    fetchAll: "api/loan-query?status=Approved", // to fetch all leads
+    operations: operations,
+  },
+  DisapprovedLoan: {
+    create: "api/loan-query", // to create a lead
+    read: "api/loan-query/", // to get a lead
+    update: `api/loan-query/`, // to update a lead
+    delete: "api/loan-query/", // to delete a lead
+    fetchAll: "api/loan-query?status=Disapproved", // to fetch all leads
+    operations: operations,
+  },
+  InProgressLoan: {
+    create: "api/loan-query", // to create a lead
+    read: "api/loan-query/", // to get a lead
+    update: `api/loan-query/`, // to update a lead
+    delete: "api/loan-query/", // to delete a lead
+    fetchAll: "api/loan-query?status=In Progress", // to fetch all leads
+    operations: operations,
+  },
   Contacts: {
     create: "api/contact", // to create a lead
     read: "api/contact/", // to get a lead
@@ -183,6 +207,22 @@ export const endpoints: Record<
     update: "api/blog/", // to update a contact-us
     read: "api/blog/", // to get a contact-us
     fetchAll: "api/blog/", // to fetch all contact-us
+    operations: operations,
+  },
+  Faqs: {
+    create: "api/faq", // to create a contact-us
+    delete: "api/faq/", // to delete a contact-us
+    update: "api/faq/", // to update a contact-us
+    read: "api/faq/", // to get a contact-us
+    fetchAll: "api/faq/", // to fetch all contact-us
+    operations: operations,
+  },
+  Banners: {
+    create: "api/banner", // to create a contact-us
+    delete: "api/banner/", // to delete a contact-us
+    update: "api/banner/", // to update a contact-us
+    read: "api/banner/", // to get a contact-us
+    fetchAll: "api/banner/", // to fetch all contact-us
     operations: operations,
   },
 };

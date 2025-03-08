@@ -10,7 +10,7 @@ interface BankDetail {
   amount: number;
 }
 
-const UpdateStatusModal = ({ data, setIsStatusModalOpen }: any) => {
+const UpdateStatusModal = ({ data, fetchData, setIsStatusModalOpen }: any) => {
   const [status, setStatus] = useState<string>("");
   const [reason, setReason] = useState("");
   const [bankDetails, setBankDetails] = useState<BankDetail[]>([]);
@@ -72,17 +72,16 @@ const UpdateStatusModal = ({ data, setIsStatusModalOpen }: any) => {
             status === "Approved"
               ? {
                   banks: bankDetails,
-                  recommendedBank
+                  recommendedBank,
                 }
               : null,
           disApprovalReason: status === "Disapproved" ? reason : null,
         },
         5000
       );
-      console.log(res)
       if (res.success) {
-        console.log("Status Updated");
-        setIsStatusModalOpen(false)
+        fetchData();
+        setIsStatusModalOpen(false);
       }
     } catch (error) {
       console.log(error);
@@ -91,7 +90,7 @@ const UpdateStatusModal = ({ data, setIsStatusModalOpen }: any) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-4 rounded-lg shadow-lg w-full lg:w-3/5 h-[80vh] overflow-y-auto">
+      <div className="bg-white p-4 rounded-lg shadow-lg w-full lg:w-3/5 h-auto">
         <h2 className="text-xl font-semibold mb-4">Update Status</h2>
 
         {/* Status Dropdown */}
@@ -114,7 +113,7 @@ const UpdateStatusModal = ({ data, setIsStatusModalOpen }: any) => {
 
         {/* Bank Details */}
         {status === "Approved" && (
-          <div >
+          <div className="h-[50vh] overflow-y-auto">
             <div>
               <h3 className="text-lg font-medium mb-2">Bank Details</h3>
               {bankDetails.map((_, index) => (
