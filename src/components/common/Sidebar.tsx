@@ -1,5 +1,6 @@
 "use client";
 
+import { CiLogout } from "react-icons/ci";
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -9,7 +10,7 @@ import { tabs } from "../../data/tabs";
 
 const Sidebar: React.FC = () => {
   const pathname = usePathname();
-  const { token, user } = useAuth();
+  const { token, user, logout } = useAuth();
   const [list, showList] = useState<any>({ tab: "", list: [] });
 
   if (!token) return null;
@@ -66,8 +67,8 @@ const Sidebar: React.FC = () => {
       module: "Manage Loan Status",
       access: {
         read: true,
-        write:true,
-        create:true,
+        write: true,
+        create: true,
         update: true,
         delete: true,
         updateStatus: true,
@@ -225,6 +226,10 @@ const Sidebar: React.FC = () => {
             </React.Fragment>
           );
         })}
+        <button
+          onClick={logout}
+          className={`py-3 pl-5 mr-auto w-[95%] pr-2 text-sm cursor-pointer hover:bg-secondary transition rounded-r-full text-info flex justify-start gap-2 items-center border-primary hover:text-white`}
+        ><CiLogout /> Log Out</button>
       </nav>
     </div>
   );
