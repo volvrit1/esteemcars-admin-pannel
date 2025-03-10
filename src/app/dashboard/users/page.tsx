@@ -14,34 +14,27 @@ const columns = [
   { key: "firstName", label: "First Name", sortable: true },
   { key: "middleName", label: "Middle Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
-  { key: "title", label: "Title", sortable: true },
-  { key: "dob", label: "Date of Birth", sortable: true, isDate: true },
-  { key: "email", label: "Email", sortable: true },
-  { key: "phone", label: "Phone Number", sortable: true },
-  { key: "leadNumber", label: "Lead Number", sortable: true },
-  { key: "userType", label: "User Type", sortable: true },
-  {
-    key: "callbackRequested",
-    label: "Callback Requested",
-    sortable: true,
-    status: true,
-  },
-  { key: "createdAt", label: "Created At", sortable: true },
+  { key: "email", label: "Email Id", sortable: true },
+  { key: "mobileNo", label: "Contact No.", sortable: true },
+  // { key: "source", label: "Source", sortable: true },
+  { key: "updatedAt", label: "Last Updated", sortable: true, isDate: true },
+  { key: "createdAt", label: "Creation Date", sortable: true, isDate: true },
 ];
 
 const filterOptions = [
+  { label: "Name", value: "name" },
   { label: "Email ID", value: "email" },
-  { label: "Cont. Number", value: "phone" },
-  { label: "State", value: "state" },
+  { label: "Cont. No.", value: "phone" },
+  { label: "Source", value: "source" },
 ];
 
 const Leads: React.FC = () => {
-  const { data, loading, error } = useFetch(endpoints["Lead"].fetchAll);
+  const { data, loading, error } = useFetch(endpoints["Users"].fetchAll);
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
 
   const { user } = useAuth();
-  const operationsAllowed = getAccessPoints(user, "Manage Lead");
+  const operationsAllowed = getAccessPoints(user, "Manage Users");
 
   if (loading && !updatedData && !error) return <Loader />;
 
@@ -49,7 +42,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="Lead"
+          type="Users"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

@@ -21,7 +21,7 @@ export const userPermissions = [
     module: "Manage Lead",
     access: {
       read: true,
-      create: true,
+      // create: true,
       update: true,
       delete: true,
     },
@@ -33,6 +33,15 @@ export const userPermissions = [
       update: true,
       delete: true,
       updateStatus: true,
+    },
+  },
+  {
+    module: "Manage Users",
+    access: {
+      // create: true,
+      read: true,
+      // update: true,
+      delete: true,
     },
   },
   {

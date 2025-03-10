@@ -65,6 +65,14 @@ export const endpoints: Record<
     fetchAll: "api/role", // to fetch all roles
     operations: operations,
   },
+  Users: {
+    create: "api/user", // to create a user
+    read: "api/user/", // to get a user
+    update: `api/user/`, // to update a user
+    delete: "api/user/", // to delete a user
+    fetchAll: "api/user", // to fetch all users
+    operations: operations,
+  },
   Ledger: {
     create: "api/ledger", // to create a party
     delete: "api/ledger/", // to delete a party

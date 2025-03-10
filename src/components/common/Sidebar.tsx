@@ -113,7 +113,16 @@ const Sidebar: React.FC = () => {
         delete: true,
       },
     },
-
+    {
+      module: "Manage Users",
+      access: {
+        read: true,
+        write: true,
+        // create: true,
+        // update: true,
+        delete: true,
+      },
+    },
     {
       module: "Manage Faqs",
       access: {
@@ -228,8 +237,10 @@ const Sidebar: React.FC = () => {
         })}
         <button
           onClick={logout}
-          className={`py-3 pl-5 mr-auto w-[95%] pr-2 text-sm cursor-pointer hover:bg-secondary transition rounded-r-full text-info flex justify-start gap-2 items-center border-primary hover:text-white`}
-        ><CiLogout /> Log Out</button>
+          className={`py-3 pl-5 mr-auto w-[95%] pr-2 text-sm cursor-pointer hover:bg-secondary transition rounded-r-full text-info flex justify-startd gap-2 items-center border-primary hover:text-white`}
+        >
+          <CiLogout /> Log Out
+        </button>
       </nav>
     </div>
   );
