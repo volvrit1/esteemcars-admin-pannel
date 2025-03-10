@@ -12,6 +12,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { endpoints } from "../../data/endpoints";
 import { Fetch } from "../../hooks/apiUtils";
+import { usePathname } from "next/navigation";
 
 interface TableColumn {
   key: string;
@@ -63,6 +64,7 @@ const TableComponent = <T extends { [key: string]: any }>({
     key: "",
     direction: null,
   });
+  const pathname = usePathname();
   const [formData, setData] = useState<any>({});
   const [endDate, setEndDate] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -76,6 +78,11 @@ const TableComponent = <T extends { [key: string]: any }>({
     setFormConfig("");
     setIsModalVisible(false);
   };
+
+  useEffect(() => {
+    if (pathname) fetchFilteredData({});
+    // eslint-disable-next-line
+  }, [pathname]);
 
   const handleSearch = (searchTerm: string, selectedOption: string) => {
     if (searchTerm && searchTerm.length < 4)

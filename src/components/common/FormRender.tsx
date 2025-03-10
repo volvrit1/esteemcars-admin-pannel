@@ -52,6 +52,12 @@ const FormRenderer: React.FC<FormRendererProps> = (props: any) => {
       return <ContactForm {...props} />;
     case "Loan":
       return <LoanForm {...props} />;
+    case "ApprovedLoan":
+      return <LoanForm {...props} />;
+    case "DisapprovedLoan":
+      return <LoanForm {...props} />;
+    case "InProgressLoan":
+      return <LoanForm {...props} />;
     case "Ledger":
       return <LedgerForm {...props} />;
     case "Purchase":
