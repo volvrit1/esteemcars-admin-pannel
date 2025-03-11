@@ -119,7 +119,6 @@ const Actions: React.FC<ActionsProps> = ({
     setShowDeleteModal(false);
   };
 
-  console.log(operationsAllowed);
   return (
     <>
       <Modal isVisible={showDeleteModal} onClose={handleDeleteModal}>

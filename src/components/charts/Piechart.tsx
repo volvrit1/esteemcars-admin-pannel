@@ -20,7 +20,7 @@ const PieChart: React.FC = () => {
       );
       if (success) setData(data);
     } catch (error) {
-      console.log(fetching);
+      
       console.log("fetchGraphSale error:", error);
     } finally {
       setFetched("done");

@@ -43,7 +43,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         //   await Fetch(endpoint, {}, 5000, true, false);
         if (adminToken && userDetails) {
           const parsedUserDetails = JSON.parse(userDetails);
-          console.log(parsedUserDetails);
           setToken(adminToken);
           setUser(parsedUserDetails);
           return navigate.replace("/dashboard");

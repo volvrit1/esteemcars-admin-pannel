@@ -138,8 +138,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
               />
             )}
 
-          
-
             {field.type === "label" && (
               <div key={field.label}>
                 <label
@@ -160,21 +158,32 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
             </div>
 
             <div className="flex flex-col">
-              {field.type === "link" && (
-                <Link
-                  target="_black"
-                  href={
-                    `${process.env.NEXT_PUBLIC_BASE_URL}${
-                      formData[field?.name]
-                    }` || ""
-                  }
-                  className="cursor-pointer text-blue-600"
-                >
-                  <label className="block text-lg font-semibold text-blue-700 cursor-pointer underline w-full mt-4">
-                    {field.label}
-                  </label>
-                </Link>
-              )}
+              {field.type === "link" ? (
+                formData[field?.name] ? (
+                  <Link
+                    target="_black"
+                    href={
+                      `${process.env.NEXT_PUBLIC_BASE_URL}${
+                        formData[field?.name]
+                      }` || ""
+                    }
+                    className="cursor-pointer text-blue-600"
+                  >
+                    <label className="block text-lg font-semibold text-blue-700 cursor-pointer underline w-full mt-4">
+                      {field.label}
+                    </label>
+                  </Link>
+                ) : (
+                  <div className="flex flex-col">
+                    <label className="block text-lg font-semibold text-gray-500 cursor-pointer w-full mt-4">
+                      {field.label}
+                    </label>
+                    <span>
+                      {"Not Available"}
+                    </span>
+                  </div>
+                )
+              ) : null}
             </div>
 
             {field.type === "radio" && (

@@ -76,6 +76,11 @@ const BannersForm: React.FC<BannersFormProps> = (props: any) => {
       ];
       const updatedFormData = updateFormData(updatedData, "address", obj, obj);
 
+      // Log FormData contents
+      updatedData?.forEach((value, key) => {
+        if (key === "title") updatedData?.append("slug", value);
+      });
+
       const response: any = data?.id
         ? await Put(url, updatedData)
         : await Post(url, updatedData);

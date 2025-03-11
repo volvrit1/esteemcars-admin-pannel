@@ -33,15 +33,8 @@ const CustomeForm: React.FC<CustomFormProps> = ({
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(form);
   };
-// temp delete it
-  console.log(  onClose,
-    returnAs,
-    formData,
-    submitting,
-    setFormData,
-    makeApiCall,)
+
   return (
     <form onSubmit={handleSubmit} className="p-4 border rounded">
       {" "}

@@ -3,10 +3,16 @@ import { FormField } from "../../../hooks/types";
 export const BannersType: FormField[] = [
   {
     name: "title",
-    type: "text",
+    type: "select",
     required: true,
     label: "Title",
-    placeholder: "Enter title",
+    placeholder: "Select banner title",
+    options: [
+      { label: "Home", value: "Home" },
+      { label: "Contact", value: "Contact Us" },
+      { label: "Blog", value: "Blog" },
+      { label: "Solution", value: "Solution" },
+    ],
   },
   {
     name: "subtitle",
@@ -15,29 +21,30 @@ export const BannersType: FormField[] = [
     label: "Sub Title",
     placeholder: "Enter sub title",
   },
-  {
-    name: "slug",
-    type: "text",
-    required: true,
-    label: "Slug",
-    max:5,
-    placeholder: "Enter slug",
-  },
+  // {
+  //   name: "slug",
+  //   type: "text",
+  //   required: true,
+  //   label: "Slug",
+  //   max: 5,
+  //   placeholder: "Enter slug",
+  // },
   {
     name: "description",
     type: "textarea",
     required: true,
     label: "Description",
-    max:5,
+    max: 5,
     placeholder: "Enter description",
+    widthFull: true,
   },
-  
+
   {
     name: "image",
     type: "file",
     required: true,
     label: "Image",
     placeholder: "",
-    widthFull:true
+    widthFull: true,
   },
 ];

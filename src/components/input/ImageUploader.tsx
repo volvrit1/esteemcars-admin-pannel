@@ -24,7 +24,6 @@ const SingleImageUploader: FC<SingleImageUploaderProps> = ({
   const [selectedImage, setSelectedImage] = useState<string | null>(
     field.value ?? null
   );
-  console.log(selectedImage, "jdkskjfklsdjflsdjlkj");
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 

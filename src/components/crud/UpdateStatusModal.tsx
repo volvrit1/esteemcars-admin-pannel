@@ -11,10 +11,12 @@ interface BankDetail {
 }
 
 const UpdateStatusModal = ({ data, fetchData, setIsStatusModalOpen }: any) => {
-  const [status, setStatus] = useState<string>("");
-  const [reason, setReason] = useState("");
-  const [bankDetails, setBankDetails] = useState<BankDetail[]>([]);
-  const [recommendedBank, setRecommendedBank] = useState("");
+  const [status, setStatus] = useState<string>(data?.status ?? "");
+  const [reason, setReason] = useState(data?.disApprovalReason || "");
+  const [bankDetails, setBankDetails] = useState<BankDetail[]>(
+    data?.approvedBankData?.banks || []
+  );
+  const [recommendedBank, setRecommendedBank] = useState(data?.recoBank||"");
   // Function to handle the status change
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setStatus(e.target.value);
@@ -48,21 +50,8 @@ const UpdateStatusModal = ({ data, fetchData, setIsStatusModalOpen }: any) => {
     setBankDetails(updatedBankDetails);
   };
 
-  // Function to save the data
-  const saveStatus = () => {
-    console.log({
-      status,
-      approvedBankData: {
-        banks: bankDetails,
-      },
-      disApprovalReason: reason,
-    });
-    // Close modal logic here if applicable
-  };
-
   const handleSubmit = async () => {
     const id = data?.id;
-    console.log(id);
     try {
       const res: any = await Put(
         `/api/loan-query/${id}`,
@@ -236,14 +225,21 @@ const UpdateStatusModal = ({ data, fetchData, setIsStatusModalOpen }: any) => {
 
             <div className="flex flex-col mb-4">
               <label htmlFor="recoBank">Recommended Bank</label>
-              <input
+              <select
                 id="recoBank"
                 className="mt-2 p-2 border border-gray-300 rounded w-full
           outline-none"
-                type="text"
                 value={recommendedBank}
                 onChange={(e) => setRecommendedBank(e.target.value)}
-              />
+              >
+                <option value="">Select Bank</option>
+                {bankDetails &&
+                  bankDetails?.map((bank, index) => (
+                    <option key={index} value={bank?.name}>
+                      {bank?.name}
+                    </option>
+                  ))}
+              </select>
             </div>
           </div>
         )}

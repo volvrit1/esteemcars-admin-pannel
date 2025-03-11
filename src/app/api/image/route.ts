@@ -6,7 +6,6 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const url = searchParams.get("url") as string;
-console.log(url)
   if (!url)
     return NextResponse.json({ error: "URL is required" }, { status: 400 });
 
@@ -24,7 +23,7 @@ console.log(url)
       status: 200,
     });
   } catch (error) {
-    console.log(error);
+    
     try {
       const imagePath = path.join(
         process.cwd(),

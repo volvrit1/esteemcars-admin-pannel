@@ -29,7 +29,7 @@ const Login: React.FC = () => {
       },
       5000
     );
-    console.log(response);
+    
     if (response?.success) {
       if (isRemember) {
         localStorage.setItem("email", email);

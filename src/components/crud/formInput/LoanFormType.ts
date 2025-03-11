@@ -26,13 +26,6 @@ export const LoanFormType: FormField[] = [
     isDisabled: true,
   },
   {
-    name: "leadId",
-    type: "number",
-    required: false,
-    label: "Lead ID",
-    isDisabled: true,
-  },
-  {
     name: "userType",
     type: "text",
     required: true,
@@ -48,14 +41,14 @@ export const LoanFormType: FormField[] = [
   },
   {
     name: "purchasePrice",
-    type: "number",
+    type: "text",
     required: true,
     label: "Purchase Price",
     isDisabled: true,
   },
   {
     name: "loanTerm",
-    type: "text",
+    type: "number",
     required: false,
     label: "Loan Term",
     isDisabled: true,
@@ -69,7 +62,7 @@ export const LoanFormType: FormField[] = [
   },
   {
     name: "depositAmount",
-    type: "number",
+    type: "text",
     required: true,
     label: "Deposit Amount",
     isDisabled: true,
@@ -78,21 +71,21 @@ export const LoanFormType: FormField[] = [
     name: "make",
     type: "text",
     required: true,
-    label: "Vehicle Make",
+    label: "Make",
     isDisabled: true,
   },
   {
     name: "model",
     type: "text",
     required: true,
-    label: "Vehicle Model",
+    label: "Model",
     isDisabled: true,
   },
   {
     name: "modelYear",
     type: "number",
     required: true,
-    label: "Vehicle Model Year",
+    label: "Model Year",
     isDisabled: true,
   },
   {
@@ -111,9 +104,9 @@ export const LoanFormType: FormField[] = [
   },
   {
     name: "dependents",
-    type: "text",
+    type: "number",
     required: true,
-    label: "Number of Dependents",
+    label: "Dependents",
     isDisabled: true,
   },
   {
@@ -137,7 +130,20 @@ export const LoanFormType: FormField[] = [
     label: "Driver License Version",
     isDisabled: true,
   },
-
+  {
+    name: "driverLicenseDocument",
+    type: "link",
+    required: false,
+    label: "Driver License Document",
+    isDisabled: true,
+  },
+  {
+    name: "rentAgreement",
+    type: "link",
+    required: false,
+    label: "Rent Agreement",
+    isDisabled: true,
+  },
   {
     name: "homeOwnership",
     type: "text",
@@ -145,7 +151,6 @@ export const LoanFormType: FormField[] = [
     label: "Home Ownership",
     isDisabled: true,
   },
-
   {
     name: "employerName",
     type: "text",
@@ -169,21 +174,21 @@ export const LoanFormType: FormField[] = [
   },
   {
     name: "timeInThisJob",
-    type: "number",
+    type: "text",
     required: false,
-    label: "Time in Current Job",
+    label: "Time in This Job",
     isDisabled: true,
   },
   {
     name: "paidFrequency",
     type: "text",
     required: false,
-    label: "Salary Payment Frequency",
+    label: "Paid Frequency",
     isDisabled: true,
   },
   {
     name: "takeHomeIncome",
-    type: "number",
+    type: "text",
     required: false,
     label: "Take Home Income",
     isDisabled: true,
@@ -197,15 +202,15 @@ export const LoanFormType: FormField[] = [
   },
   {
     name: "partnerTakeHomeIncome",
-    type: "number",
+    type: "text",
     required: false,
     label: "Partner Take Home Income",
     isDisabled: true,
   },
   {
     name: "otherIncome",
-    type: "checkbox",
-    required: false,
+    type: "text",
+    required: true,
     label: "Other Income",
     isDisabled: true,
   },
@@ -238,10 +243,59 @@ export const LoanFormType: FormField[] = [
     isDisabled: true,
   },
   {
-    name: "status",
+    name: "tradeCar",
     type: "text",
     required: true,
-    label: "Status",
+    label: "Trade Car",
+    isDisabled: true,
+  },
+  {
+    name: "vehicleMake",
+    type: "text",
+    required: false,
+    label: "Vehicle Make",
+    isDisabled: true,
+  },
+  {
+    name: "vehicleModel",
+    type: "text",
+    required: false,
+    label: "Vehicle Model",
+    isDisabled: true,
+  },
+  {
+    name: "vehicleYear",
+    type: "number",
+    required: false,
+    label: "Vehicle Year",
+    isDisabled: true,
+  },
+  {
+    name: "vehicleVariant",
+    type: "text",
+    required: false,
+    label: "Vehicle Variant",
+    isDisabled: true,
+  },
+  {
+    name: "kmDriven",
+    type: "number",
+    required: false,
+    label: "KM Driven",
+    isDisabled: true,
+  },
+  {
+    name: "disApprovalReason",
+    type: "text",
+    required: false,
+    label: "Disapproval Reason",
+    isDisabled: true,
+  },
+  {
+    name: "approvedBankData",
+    type: "text",
+    required: false,
+    label: "Approved Bank Data",
     isDisabled: true,
   },
   {
@@ -256,26 +310,13 @@ export const LoanFormType: FormField[] = [
       { value: "In Progress", label: "In Progress" },
     ],
   },
-  {
-    name: "rentAgreement",
-    type: "link",
-    required: false,
-    label: "Rent Agreement",
-    isDisabled: true,
-  },
+
   {
     name: "comments",
     type: "textarea",
     required: false,
     label: "Comments",
     isDisabled: true,
+    widthFull:true
   },
-  {
-    name: "driverLicenseDocument",
-    type: "link",
-    required: false,
-    label: "Driver License Document",
-    isDisabled: true,
-  },
-
 ];
