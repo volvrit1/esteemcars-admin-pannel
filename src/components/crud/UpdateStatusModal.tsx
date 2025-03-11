@@ -16,7 +16,7 @@ const UpdateStatusModal = ({ data, fetchData, setIsStatusModalOpen }: any) => {
   const [bankDetails, setBankDetails] = useState<BankDetail[]>(
     data?.approvedBankData?.banks || []
   );
-  const [recommendedBank, setRecommendedBank] = useState(data?.recoBank||"");
+  const [recommendedBank, setRecommendedBank] = useState(data?.approvedBankData?.recommendedBank||"");
   // Function to handle the status change
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setStatus(e.target.value);
