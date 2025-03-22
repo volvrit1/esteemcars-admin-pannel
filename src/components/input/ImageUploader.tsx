@@ -28,12 +28,12 @@ const SingleImageUploader: FC<SingleImageUploaderProps> = ({
     const file = event.target.files?.[0];
 
     if (file) {
-      const maxSizeInBytes = 1024 * 1024; // 1 MB
+      const maxSizeInBytes = 20 * 1024 * 1024; // 5 MB
       const validTypes = ["image/png", "image/jpeg", "image/jpg"];
 
       if (file.size > maxSizeInBytes) {
         return toast.warn(
-          "File size exceeds 1 MB. Please select a smaller file."
+          "File size exceeds 10 MB. Please select a smaller file."
         );
       }
 
