@@ -11,6 +11,7 @@ export const BannersType: FormField[] = [
       { label: "Home", value: "Home" },
       { label: "Contact", value: "Contact Us" },
       { label: "Blog", value: "Blog" },
+      { label: "Why", value: "Why" },
       { label: "Solution", value: "Solution" },
     ],
   },
