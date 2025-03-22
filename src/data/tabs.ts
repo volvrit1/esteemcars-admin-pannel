@@ -94,14 +94,14 @@ export const tabs = [
     pageTitle: "Role Management",
     permission: "Role Management",
   },
-  {
-    id: 400,
-    icon: RiAdminFill,
-    label: "Manage Users",
-    href: "/dashboard/users",
-    pageTitle: "All Users",
-    permission: "Manage Users",
-  },
+  // {
+  //   id: 400,
+  //   icon: RiAdminFill,
+  //   label: "Manage Users",
+  //   href: "/dashboard/users",
+  //   pageTitle: "All Users",
+  //   permission: "Manage Users",
+  // },
   {
     id: 4,
     icon: RiAdminFill,
