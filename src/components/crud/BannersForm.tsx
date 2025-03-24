@@ -82,8 +82,8 @@ const BannersForm: React.FC<BannersFormProps> = (props: any) => {
       });
 
       const response: any = data?.id
-        ? await Put(url, updatedData)
-        : await Post(url, updatedData);
+        ? await Put(url, updatedData,60000)
+        : await Post(url, updatedData,60000);
 
       if (response.success) {
         const fetchUrl = `${endpoints[formType].fetchAll}`;

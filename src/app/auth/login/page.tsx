@@ -180,7 +180,7 @@ const Login: React.FC = () => {
 
               <Link href="">
                 <Image
-                  src={"/next.svg"}
+                  src={"/assets/logo/logo.png"}
                   alt="logo"
                   width={85}
                   height={75}
