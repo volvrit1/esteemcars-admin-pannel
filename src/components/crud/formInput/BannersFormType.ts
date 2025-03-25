@@ -22,14 +22,14 @@ export const BannersType: FormField[] = [
     label: "Sub Title",
     placeholder: "Enter sub title",
   },
-  // {
-  //   name: "slug",
-  //   type: "text",
-  //   required: true,
-  //   label: "Slug",
-  //   max: 5,
-  //   placeholder: "Enter slug",
-  // },
+  {
+    name: "mobile",
+    type: "choose",
+    required: true,
+    label: "Mobile Image",
+    max: 5,
+    placeholder: "Enter mobile",
+  },
   {
     name: "description",
     type: "textarea",
