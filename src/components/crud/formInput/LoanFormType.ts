@@ -1,6 +1,3 @@
-import { countries, bankNames } from "../../../data/data";
-import { getSelectFormattedData } from "../../../hooks/general";
-import { includes } from "../../../hooks/polyfills";
 import { FormField } from "../../../hooks/types";
 
 export const LoanFormType: FormField[] = [

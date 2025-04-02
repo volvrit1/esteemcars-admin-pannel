@@ -89,12 +89,44 @@ export const endpoints: Record<
     fetchAll: "api/ships", // to fetch all partys
     operations: operations,
   },
-  Lead: {
+  Call: {
     create: "api/lead", // to create a lead
     read: "api/lead/", // to get a lead
     update: `api/lead/`, // to update a lead
     delete: "api/lead/", // to delete a lead
     fetchAll: "api/lead", // to fetch all leads
+    operations: operations,
+  },
+  Leads: {
+    create: "api/loan-application", // to create a lead
+    read: "api/loan-application/", // to get a lead
+    update: `api/loan-application/`, // to update a lead
+    delete: "api/loan-application/", // to delete a lead
+    fetchAll: "api/loan-application", // to fetch all leads
+    operations: operations,
+  },
+  PendingLeads: {
+    create: "api/loan-application", // to create a lead
+    read: "api/loan-application/", // to get a lead
+    update: `api/loan-application/`, // to update a lead
+    delete: "api/loan-application/", // to delete a lead
+    fetchAll: "api/loan-application?status=Pending", // to fetch all leads
+    operations: operations,
+  },
+  MaterializeLeads: {
+    create: "api/loan-application", // to create a lead
+    read: "api/loan-application/", // to get a lead
+    update: `api/loan-application/`, // to update a lead
+    delete: "api/loan-application/", // to delete a lead
+    fetchAll: "api/loan-application?status=Metallized", // to fetch all leads
+    operations: operations,
+  },
+  InProgressLeads: {
+    create: "api/loan-application", // to create a lead
+    read: "api/loan-application/", // to get a lead
+    update: `api/loan-application/`, // to update a lead
+    delete: "api/loan-application/", // to delete a lead
+    fetchAll: "api/loan-application?status=In-Progess", // to fetch all leads
     operations: operations,
   },
   Loan: {

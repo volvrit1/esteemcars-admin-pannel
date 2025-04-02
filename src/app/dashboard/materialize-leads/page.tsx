@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 import AuthGuard from "../../../components/AuthGuard";
 import Loader from "../../../components/common/Loader";
@@ -10,7 +10,7 @@ import { getAccessPoints } from "../../../hooks/general";
 import useFetch from "../../../hooks/useFetch";
 
 const columns = [
-  { key: "id", label: "ID" ,isIndex:true},
+  { key: "id", label: "ID",isIndex:true },
   { key: "title", label: "Title", sortable: true },
   { key: "firstName", label: "First Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
@@ -31,9 +31,8 @@ const filterOptions = [
   { label: "Status", value: "status" },
 ];
 
-
 const Leads: React.FC = () => {
-  const { data, loading, error } = useFetch(endpoints["Leads"].fetchAll);
+  const { data, loading, error } = useFetch(endpoints["PendingLeads"].fetchAll);
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
 
@@ -46,7 +45,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="Leads"
+          type="MaterializeLeads"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

@@ -10,35 +10,38 @@ import { getAccessPoints } from "../../../hooks/general";
 import useFetch from "../../../hooks/useFetch";
 
 const columns = [
-  { key: "id", label: "ID" ,isIndex:true},
-  { key: "title", label: "Title", sortable: true },
+  { key: "id", label: "ID" },
   { key: "firstName", label: "First Name", sortable: true },
+  { key: "middleName", label: "Middle Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
-  { key: "otpVerified", label: "Verified", sortable: true, status: true },
-  { key: "status", label: "Status", sortable: true,isStatus:true },
-  { key: "dateOfBirth", label: "Date of Birth", sortable: true, isDate: true },
-  { key: "mobile", label: "Mobile", sortable: true },
+  { key: "title", label: "Title", sortable: true },
+  { key: "dob", label: "Date of Birth", sortable: true, isDate: true },
   { key: "email", label: "Email", sortable: true },
-  { key: "loanAmount", label: "Loan Amount", sortable: true },
-  { key: "weeklyPayment", label: "Weekly Payment", sortable: true },
-  { key: "createdAt", label: "Created At", sortable: true, isDate: true },
+  { key: "phone", label: "Phone Number", sortable: true },
+  { key: "leadNumber", label: "Lead Number", sortable: true },
+  { key: "userType", label: "User Type", sortable: true },
+  {
+    key: "callbackRequested",
+    label: "Callback Requested",
+    sortable: true,
+    status: true,
+  },
+  { key: "createdAt", label: "Created At", sortable: true },
 ];
 
 const filterOptions = [
-  { label: "All", value: "" },
   { label: "Email ID", value: "email" },
-  { label: "Cont. Number", value: "mobile" },
-  { label: "Status", value: "status" },
+  { label: "Cont. Number", value: "phone" },
+  { label: "State", value: "state" },
 ];
 
-
 const Leads: React.FC = () => {
-  const { data, loading, error } = useFetch(endpoints["Leads"].fetchAll);
+  const { data, loading, error } = useFetch(endpoints["Call"].fetchAll);
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
 
   const { user } = useAuth();
-  const operationsAllowed = getAccessPoints(user, "Manage Leads");
+  const operationsAllowed = getAccessPoints(user, "Manage Call");
 
   if (loading && !updatedData && !error) return <Loader />;
 
@@ -46,7 +49,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="Leads"
+          type="Call Back"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

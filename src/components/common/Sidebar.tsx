@@ -44,7 +44,28 @@ const Sidebar: React.FC = () => {
       },
     },
     {
-      module: "Manage Lead",
+      module: "Manage Leads",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+      },
+    },
+    {
+      module: "Manage Leads Status",
+      access: {
+        read: true,
+        write: true,
+        create: true,
+        update: true,
+        delete: true,
+        updateStatus: true,
+      },
+    },
+    {
+      module: "Manage Call",
       access: {
         read: true,
         write: true,

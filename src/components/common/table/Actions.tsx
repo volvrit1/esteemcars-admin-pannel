@@ -7,6 +7,7 @@ import { Fetch, Delete } from "../../../hooks/apiUtils";
 import ConfirmationModal from "../../crud/ConfirmationModal";
 import UpdateStatusModal from "../../crud/UpdateStatusModal";
 import { RxUpdate } from "react-icons/rx";
+import UpdateLeadsStatusModal from "../../crud/UpdateLeadsStatus";
 
 interface RowData {
   id: string;
@@ -18,6 +19,7 @@ interface OperationsAllowed {
   viewStock?: boolean;
   invoice?: boolean;
   updateStatus?: boolean;
+  updateLeadsStatus?: boolean;
 }
 
 interface ActionsProps {
@@ -30,6 +32,8 @@ interface ActionsProps {
   setIsModalVisible: (isVisible: boolean) => void;
   isStatusModalOpen?: boolean;
   setIsStatusModalOpen?: (isVisible: boolean) => void;
+  isLeadsStatusModalOpen?: boolean;
+  setIsLeadsStatusModalOpen?: (isVisible: boolean) => void;
 }
 
 const Actions: React.FC<ActionsProps> = ({
@@ -42,11 +46,15 @@ const Actions: React.FC<ActionsProps> = ({
   operationsAllowed,
   isStatusModalOpen,
   setIsStatusModalOpen,
+  isLeadsStatusModalOpen,
+  setIsLeadsStatusModalOpen,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
   const [selectIdForDeletion, setSelectIdForDeletion] = useState<string>("");
+  const [rowData, setRowData] = useState<any>();
+  const [id, setId] = useState("");
 
   const handleEdit = async (id?: string) => {
     if (!id) return;
@@ -115,6 +123,15 @@ const Actions: React.FC<ActionsProps> = ({
     setIsStatusModalOpen(true);
   };
 
+  const handleLeadsStaus = (id?: string, row?: any) => {
+    if (!id) return;
+    {
+      setId(id);
+      setRowData(row);
+      setIsLeadsStatusModalOpen(true);
+    }
+  };
+
   const handleDeleteModal = () => {
     setShowDeleteModal(false);
   };
@@ -168,11 +185,29 @@ const Actions: React.FC<ActionsProps> = ({
           <RxUpdate title="View Stock" />
         </button>
       )}
+
+      {operationsAllowed?.updateLeadsStatus && (
+        <button
+          onClick={() => handleLeadsStaus(row.id, row)}
+          className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
+        >
+          <RxUpdate title="View Stock" />
+        </button>
+      )}
+
       {isStatusModalOpen && (
         <UpdateStatusModal
-        fetchData={fetchFilterData}
+          fetchData={fetchFilterData}
           setIsStatusModalOpen={setIsStatusModalOpen}
           data={row}
+        />
+      )}
+      {isLeadsStatusModalOpen && rowData?.id === id && (
+        <UpdateLeadsStatusModal
+          fetchData={fetchFilterData}
+          id={id}
+          data={rowData}
+          onClose={() => setIsLeadsStatusModalOpen(false)}
         />
       )}
     </>

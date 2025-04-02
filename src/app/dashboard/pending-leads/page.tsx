@@ -10,12 +10,12 @@ import { getAccessPoints } from "../../../hooks/general";
 import useFetch from "../../../hooks/useFetch";
 
 const columns = [
-  { key: "id", label: "ID" ,isIndex:true},
+  { key: "id", label: "ID",isIndex:true },
   { key: "title", label: "Title", sortable: true },
   { key: "firstName", label: "First Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
   { key: "otpVerified", label: "Verified", sortable: true, status: true },
-  { key: "status", label: "Status", sortable: true,isStatus:true },
+  { key: "status", label: "Status", sortable: true, isStatus: true },
   { key: "dateOfBirth", label: "Date of Birth", sortable: true, isDate: true },
   { key: "mobile", label: "Mobile", sortable: true },
   { key: "email", label: "Email", sortable: true },
@@ -25,20 +25,19 @@ const columns = [
 ];
 
 const filterOptions = [
-  { label: "All", value: "" },
+  { label: "All", value: "all" },
   { label: "Email ID", value: "email" },
   { label: "Cont. Number", value: "mobile" },
   { label: "Status", value: "status" },
 ];
 
-
 const Leads: React.FC = () => {
-  const { data, loading, error } = useFetch(endpoints["Leads"].fetchAll);
+  const { data, loading, error } = useFetch(endpoints["PendingLeads"].fetchAll);
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
 
   const { user } = useAuth();
-  const operationsAllowed = getAccessPoints(user, "Manage Leads");
+  const operationsAllowed = getAccessPoints(user, "Manage Leads Status");
 
   if (loading && !updatedData && !error) return <Loader />;
 
@@ -46,7 +45,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="Leads"
+          type="PendingLeads"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

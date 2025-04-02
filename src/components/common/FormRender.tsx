@@ -21,6 +21,7 @@ import TestimonialsForm from "../crud/TestimonialsForm";
 import BlogForm from "../crud/Blogs";
 import FaqsForm from "../crud/FaqsForm";
 import BannersForm from "../crud/BannersForm";
+import CallBackForm from "../crud/CallBackForm";
 
 interface FormRendererProps {
   data: any;
@@ -46,8 +47,10 @@ const FormRenderer: React.FC<FormRendererProps> = (props: any) => {
       return <CategoryForm {...props} />;
     case "Delete":
       return <ConfirmationModal {...props} />;
-    case "Lead":
+    case "Leads":
       return <LeadForm {...props} />;
+    case "CallBack":
+      return <CallBackForm {...props} />;
     case "Contacts":
       return <ContactForm {...props} />;
     case "Loan":
