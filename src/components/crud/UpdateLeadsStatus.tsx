@@ -48,7 +48,7 @@ export default function UpdateLeadsStatusModal({
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      const domainWithProtocol = `${window.location.protocol}//${window.location.host}/apply-for-car-loan/${data?.id}`;
+      const domainWithProtocol = `${window.location.protocol}//${window.location.host}/apply-for-car-loan?id=${data?.id}`;
       const sanitizedCountryCode = data?.countryCode?.replace(/[+\\]/g, "");
       const updated = {
         status,
