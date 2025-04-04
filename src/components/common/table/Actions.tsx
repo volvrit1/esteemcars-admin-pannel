@@ -8,12 +8,15 @@ import ConfirmationModal from "../../crud/ConfirmationModal";
 import UpdateStatusModal from "../../crud/UpdateStatusModal";
 import { RxUpdate } from "react-icons/rx";
 import UpdateLeadsStatusModal from "../../crud/UpdateLeadsStatus";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa6";
 
 interface RowData {
   id: string;
 }
 
 interface OperationsAllowed {
+  chat?: boolean;
   update?: boolean;
   delete?: boolean;
   viewStock?: boolean;
@@ -179,10 +182,10 @@ const Actions: React.FC<ActionsProps> = ({
       )}
       {operationsAllowed?.updateStatus && (
         <button
-          onClick={() => handleInvoice(row.id)}
+          onClick={() => handleLeadsStaus(row.id, row)}
           className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
         >
-          <RxUpdate title="View Stock" />
+          <RxUpdate title="View Loan Status" />
         </button>
       )}
 
@@ -191,8 +194,17 @@ const Actions: React.FC<ActionsProps> = ({
           onClick={() => handleLeadsStaus(row.id, row)}
           className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
         >
-          <RxUpdate title="View Stock" />
+          <RxUpdate title="Update Leads Status" />
         </button>
+      )}
+
+      {operationsAllowed?.chat && (
+        <Link
+          href={"/dashboard/client-chat"}
+          className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
+        >
+          <FaWhatsapp title="Chat with client" />
+        </Link>
       )}
 
       {isStatusModalOpen && (

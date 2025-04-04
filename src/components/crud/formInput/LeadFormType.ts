@@ -215,9 +215,10 @@ export const LeadFormType: FormField[] = [
     label: "Status",
     isDisabled: false,
     options: [
-      { value: "Metallized", label: "Metallized" },
+      { value: "Select Status", label: "Select Status" },
+      { value: "Eligible", label: "Eligible" },
+      { value: "Not Eligible", label: "Not Eligible" },
       { value: "Pending", label: "Pending" },
-      { value: "In-Progess", label: "In Progess" },
     ],
   },
 ];

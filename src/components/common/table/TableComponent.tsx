@@ -241,7 +241,7 @@ const Table: React.FC<TableProps> = ({
                   </td>
                 ))}
                 {operationsAllowed?.read && (
-                  <td className="text-nowrap border border-infobg px-4 py-3">
+                  <td className="text-nowrap border border-infobg px-4 py-3 flex items-center">
                     <Actions
                       row={row}
                       type={type}

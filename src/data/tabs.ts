@@ -76,15 +76,7 @@ export const tabs = [
     pageTitle: "Manage Ledger",
     permission: "Manage Ledger",
   },
-  {
-    id: 17,
-    tabs: [],
-    icon: MdOutlineContactSupport,
-    label: "Manage Queries",
-    href: "/dashboard/contacts",
-    pageTitle: "Manage Queries",
-    permission: "Manage Contacts",
-  },
+
   {
     id: 3,
     tabs: [],
@@ -193,6 +185,15 @@ export const tabs = [
         permission: "Manage Loan Status",
       },
     ],
+  },
+  {
+    id: 17,
+    tabs: [],
+    icon: MdOutlineContactSupport,
+    label: "Manage Queries",
+    href: "/dashboard/contacts",
+    pageTitle: "Manage Queries",
+    permission: "Manage Contacts",
   },
   {
     id: 19,

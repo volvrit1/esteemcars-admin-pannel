@@ -34,6 +34,7 @@ export const userPermissions = [
       update: true,
       delete: true,
       updateLeadsStatus: true,
+      chat: true,
     },
   },
   {
@@ -45,6 +46,7 @@ export const userPermissions = [
       update: true,
       delete: true,
       updateLeadsStatus: true,
+      chat: true,
     },
   },
   {

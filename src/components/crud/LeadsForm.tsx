@@ -34,6 +34,31 @@ const LeadForm: React.FC<LeadFormProps> = (props: any) => {
     data?.id ? populateFormData(LeadFormType, data) : {}
   );
 
+  const handleSendForm = async (countryCode, mobile, name, link, status) => {
+    setLoading(true);
+
+    const Data = {
+      mobile: countryCode + mobile,
+      name: name,
+      trackingUrl: link,
+      status,
+    };
+
+    try {
+      const res = await fetch("/api/send-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Data),
+      });
+
+      const result = await res.json();
+      return result;
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   useEffect(() => {
     const fetchRoles = async () => {
       try {
