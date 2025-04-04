@@ -20,23 +20,23 @@ export default function UpdateLeadsStatusModal({
   const [loading, setLoading] = useState(false);
   const [link, setlink] = useState("");
 
-  const handleSendForm = async (countryCode, mobile, name, link, status) => {
+  const handleSendForm = async (data: any) => {
     setLoading(true);
 
-    const Data = {
-      mobile: countryCode + mobile,
-      name: name,
-      trackingUrl: link,
-      status,
+    let updated = {
+      name: data.name,
+      status: data.status,
+      trackingUrl: data?.link,
+      mobile: data?.code + data?.mobile,
     };
-
+    if (data.status === "Not Eligible") delete updated?.trackingUrl;
     try {
       const res = await fetch("/api/send-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(Data),
+        body: JSON.stringify(updated),
       });
 
       const result = await res.json();
@@ -48,61 +48,24 @@ export default function UpdateLeadsStatusModal({
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      console.log(status);
-      if (status === "Eligible") {
-        const sanitizedCountryCode = data?.countryCode?.replace(/[+\\]/g, "");
-        const formRes = await handleSendForm(
-          sanitizedCountryCode,
-          data?.mobile,
-          data?.fistName + " " + data?.lastName,
-          link,
-          status
-        );
-
-        console.log(formRes);
-        if (formRes?.result) {
-          await Put(`/api/loan-application/${id}`, { status }, 5000, true).then(
-            (res: any) => {
-              if (res?.success) {
-                fetchData();
-                onClose();
-              }
-            }
-          );
-        } else if(status === "Not Eligible") {
-          const sanitizedCountryCode = data?.countryCode?.replace(/[+\\]/g, "");
-          const formRes = await handleSendForm(
-            sanitizedCountryCode,
-            data?.mobile,
-            data?.fistName + " " + data?.lastName,
-            link,
-            status
-          );
-
-          console.log(formRes);
-          if (formRes?.result) {
-            await Put(
-              `/api/loan-application/${id}`,
-              { status },
-              5000,
-              true
-            ).then((res: any) => {
-              if (res?.success) {
-                fetchData();
-                onClose();
-              }
-            });
-          }
-        }
-      } else {
-        await Put(`/api/loan-application/${id}`, { status }, 5000, true).then(
-          (res: any) => {
-            if (res?.success) {
-              fetchData();
-              onClose();
-            }
-          }
-        );
+      const domainWithProtocol = `${window.location.protocol}//${window.location.host}/apply-for-car-loan/${data?.id}`;
+      const sanitizedCountryCode = data?.countryCode?.replace(/[+\\]/g, "");
+      const updated = {
+        status,
+        mobile: data?.mobile,
+        link: domainWithProtocol,
+        code: sanitizedCountryCode,
+        name: `${data?.firstName ?? ""} ${data?.lastName ?? ""}`.trim() || "User",
+      }
+      const shouldSendForm = status === "Eligible" || status === "Not Eligible";
+      if (shouldSendForm) {
+        const formRes = await handleSendForm(updated);
+        if (!formRes?.result) return;
+      }
+      const res: any = await Put(`/api/loan-application/${id}`, { status }, 5000, true);
+      if (res?.success) {
+        fetchData();
+        onClose();
       }
     } catch (error) {
       console.error("Failed to update status", error);

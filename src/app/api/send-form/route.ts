@@ -18,16 +18,21 @@ export async function POST(req: Request) {
     const apiUrl = `https://live-mt-server.wati.io/425322/api/v1/sendTemplateMessage?whatsappNumber=${mobile}`;
 
     const data = {
-      template_name: status==="Eligible"?"sent_form":"not_eligible",
-      broadcast_name:  status==="Eligible"?"sent_form_040420251503":"not_eligible_040420251720",
+      template_name: status === "Eligible" ? "sent_form" : "not_eligible",
+      broadcast_name:
+        status === "Eligible"
+          ? "sent_form_040420251503"
+          : "not_eligible_040420251720",
       parameters: [
         { name: "name", value: name || "" },
         status === "Eligible"
-          ? { name: "tracking_url", value: trackingUrl || "" }
-          : null,
+          ? {
+              name: "tracking_url",
+              value: trackingUrl || "",
+            }
+          : {},
       ],
     };
-
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
