@@ -19,13 +19,14 @@ export default function UpdateLeadsStatusModal({
   const [status, setStatus] = useState(data?.status);
   const [loading, setLoading] = useState(false);
   const [reason, setReason] = useState(data?.disapprovalReason);
-  
+
   const handleSendForm = async (data: any) => {
     setLoading(true);
 
     let updated = {
       name: data.name,
       status: data.status,
+      reason: data.reason,
       trackingUrl: data?.link,
       mobile: data?.code + data?.mobile,
     };
@@ -52,6 +53,7 @@ export default function UpdateLeadsStatusModal({
       const sanitizedCountryCode = data?.countryCode?.replace(/[+\\]/g, "");
       const updated = {
         status,
+        reason: reason,
         mobile: data?.mobile,
         link: domainWithProtocol,
         code: sanitizedCountryCode,
@@ -63,16 +65,15 @@ export default function UpdateLeadsStatusModal({
         const formRes = await handleSendForm(updated);
         if (!formRes?.result) return;
       }
-
       const dataPayload =
         status === "Not Eligible"
           ? {
-              status,
-              disapprovalReason: reason,
-            }
+            status,
+            disapprovalReason: reason,
+          }
           : {
-              status,
-            };
+            status,
+          };
       const res: any = await Put(
         `/api/loan-application/${id}`,
         dataPayload,
