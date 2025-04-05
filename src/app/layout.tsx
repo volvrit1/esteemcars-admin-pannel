@@ -21,9 +21,9 @@ const geistMono = localFont({
 
 
 export const metadata: Metadata = {
-  title: "Esteem Cars | Admin Panel",
+  title: "Esteem Finance | Admin Panel",
   description:
-    "Esteem Cars",
+    "Esteem Finance",
 };
 
 // const lato = Lato({

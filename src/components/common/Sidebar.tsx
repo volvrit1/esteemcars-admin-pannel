@@ -200,7 +200,7 @@ return (
             unoptimized
             src={"/assets/logo/logo.jpg"}
           /> */}
-          <h1 className="text-3xl">Esteem Cars</h1>
+          <h1 className="text-3xl">Esteem Finance</h1>
         </Link>
       </div>
       <nav className="flex flex-col gap-2 justify-center items-center mt-[72px] mb-40">
