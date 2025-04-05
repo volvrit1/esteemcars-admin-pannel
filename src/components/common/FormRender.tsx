@@ -49,6 +49,12 @@ const FormRenderer: React.FC<FormRendererProps> = (props: any) => {
       return <ConfirmationModal {...props} />;
     case "Leads":
       return <LeadForm {...props} />;
+    case "Eligible":
+      return <LeadForm {...props} />;
+    case "NotEligible":
+      return <LeadForm {...props} />;
+    case "PendingLeads":
+      return <LeadForm {...props} />;
     case "CallBack":
       return <CallBackForm {...props} />;
     case "Contacts":

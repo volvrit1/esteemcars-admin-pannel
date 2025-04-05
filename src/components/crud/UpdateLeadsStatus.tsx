@@ -18,8 +18,8 @@ export default function UpdateLeadsStatusModal({
 }) {
   const [status, setStatus] = useState(data?.status);
   const [loading, setLoading] = useState(false);
-  const [link, setlink] = useState("");
-
+  const [reason, setReason] = useState(data?.disapprovalReason);
+  
   const handleSendForm = async (data: any) => {
     setLoading(true);
 
@@ -55,15 +55,33 @@ export default function UpdateLeadsStatusModal({
         mobile: data?.mobile,
         link: domainWithProtocol,
         code: sanitizedCountryCode,
-        name: `${data?.firstName ?? ""} ${data?.lastName ?? ""}`.trim() || "User",
-      }
+        name:
+          `${data?.firstName ?? ""} ${data?.lastName ?? ""}`.trim() || "User",
+      };
       const shouldSendForm = status === "Eligible" || status === "Not Eligible";
       if (shouldSendForm) {
         const formRes = await handleSendForm(updated);
         if (!formRes?.result) return;
       }
-      const res: any = await Put(`/api/loan-application/${id}`, { status }, 5000, true);
+
+      const dataPayload =
+        status === "Not Eligible"
+          ? {
+              status,
+              disapprovalReason: reason,
+            }
+          : {
+              status,
+            };
+      const res: any = await Put(
+        `/api/loan-application/${id}`,
+        dataPayload,
+        5000,
+        false
+      );
       if (res?.success) {
+        setReason("");
+        setStatus("");
         fetchData();
         onClose();
       }
@@ -92,6 +110,23 @@ export default function UpdateLeadsStatusModal({
             </option>
           ))}
         </select>
+
+        {status === "Not Eligible" && (
+          <div className="flex flex-col mb-4">
+            <label htmlFor="reason" className=" mb-4">
+              Not Eligible Reason
+            </label>
+            <textarea
+              name="reason"
+              id="reason"
+              placeholder="Enter here reason..."
+              rows={4}
+              className="w-full p-2 outline-none border rounded"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            />
+          </div>
+        )}
         <div className="flex justify-end space-x-2">
           <button
             onClick={onClose}

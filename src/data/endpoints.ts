@@ -113,20 +113,20 @@ export const endpoints: Record<
     fetchAll: "api/loan-application?status=Pending", // to fetch all leads
     operations: operations,
   },
-  MaterializeLeads: {
+  NotEligible: {
     create: "api/loan-application", // to create a lead
     read: "api/loan-application/", // to get a lead
     update: `api/loan-application/`, // to update a lead
     delete: "api/loan-application/", // to delete a lead
-    fetchAll: "api/loan-application?status=Metallized", // to fetch all leads
+    fetchAll: "api/loan-application?status=Not Eligible", // to fetch all leads
     operations: operations,
   },
-  InProgressLeads: {
+  Eligible: {
     create: "api/loan-application", // to create a lead
     read: "api/loan-application/", // to get a lead
     update: `api/loan-application/`, // to update a lead
     delete: "api/loan-application/", // to delete a lead
-    fetchAll: "api/loan-application?status=In-Progess", // to fetch all leads
+    fetchAll: "api/loan-application?status=Eligible", // to fetch all leads
     operations: operations,
   },
   Loan: {

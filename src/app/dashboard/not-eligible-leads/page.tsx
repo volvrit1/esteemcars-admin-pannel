@@ -10,12 +10,12 @@ import { getAccessPoints } from "../../../hooks/general";
 import useFetch from "../../../hooks/useFetch";
 
 const columns = [
-  { key: "id", label: "ID" ,isIndex:true},
+  { key: "id", label: "ID", isIndex: true },
   { key: "title", label: "Title", sortable: true },
   { key: "firstName", label: "First Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
   { key: "otpVerified", label: "Verified", sortable: true, status: true },
-  { key: "status", label: "Status", sortable: true,isStatus:true },
+  { key: "status", label: "Status", sortable: true, isStatus: true },
   { key: "disapprovalReason", label: "Disapproval Reason", ifCondition: "Not Eligible" },
   { key: "dateOfBirth", label: "Date of Birth", sortable: true, isDate: true },
   { key: "mobile", label: "Mobile", sortable: true },
@@ -32,9 +32,8 @@ const filterOptions = [
   { label: "Status", value: "status" },
 ];
 
-
 const Leads: React.FC = () => {
-  const { data, loading, error } = useFetch(endpoints["Leads"].fetchAll);
+  const { data, loading, error } = useFetch(endpoints["NotEligible"].fetchAll);
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
 
@@ -47,7 +46,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="Leads"
+          type="NotEligible"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

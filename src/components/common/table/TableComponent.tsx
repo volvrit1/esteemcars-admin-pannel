@@ -17,6 +17,7 @@ interface Column {
   status?: boolean;
   isStatus?: boolean;
   isClickable?: boolean;
+  ifCondition?: string;
 }
 
 interface OperationsAllowed {
@@ -224,9 +225,9 @@ const Table: React.FC<TableProps> = ({
                             ? "bg-green-50 text-green-600"
                             : formatRowValue(row, col) === "In Progress"
                             ? "bg-yellow-50 text-yellow-600"
-                            : formatRowValue(row, col) === "In-Progess"
+                            : formatRowValue(row, col) === "Pending"
                             ? "bg-yellow-50 text-yellow-600"
-                            : formatRowValue(row, col) === "Metallized"
+                            : formatRowValue(row, col) === "Eligible"
                             ? "bg-green-50 text-green-600"
                             : "bg-red-50 text-red-600"
                         } px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset`}
@@ -235,6 +236,8 @@ const Table: React.FC<TableProps> = ({
                       </span>
                     ) : col?.isIndex ? (
                       index + 1
+                    ) : col?.ifCondition === "Not Eligible" ? (
+                      formatRowValue(row, col)
                     ) : (
                       formatRowValue(row, col)
                     )}

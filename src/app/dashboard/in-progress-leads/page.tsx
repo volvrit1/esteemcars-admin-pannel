@@ -32,7 +32,7 @@ const filterOptions = [
 
 const Leads: React.FC = () => {
   const { data, loading, error } = useFetch(
-    endpoints["InProgressLeads"].fetchAll
+    endpoints["NotEligible"].fetchAll
   );
   const updatedData = data?.data.result;
   const paginationData = data?.data?.pagination;
@@ -46,7 +46,7 @@ const Leads: React.FC = () => {
     <AuthGuard>
       <Wrapper>
         <TableComponent
-          type="InProgressLeads"
+          type="NotEligible"
           columns={columns}
           data={updatedData}
           filterOptions={filterOptions}

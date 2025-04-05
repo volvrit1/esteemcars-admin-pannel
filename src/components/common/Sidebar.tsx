@@ -61,7 +61,7 @@ const Sidebar: React.FC = () => {
         create: true,
         update: true,
         delete: true,
-        updateStatus: true,
+        updateLeadsStatus: true,
       },
     },
     {
@@ -186,7 +186,7 @@ const Sidebar: React.FC = () => {
     );
   }
 
-  return (
+return (
     <div
       className={`fixed w-[17%] text-white bg-primary h-full overflow-y-scroll no-scrollbar`}
     >

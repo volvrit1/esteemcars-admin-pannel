@@ -121,7 +121,7 @@ const Actions: React.FC<ActionsProps> = ({
     const url = `${pathname}/${id}`;
     return router.push(url);
   };
-  const handleInvoice = (id?: string) => {
+  const handleStatusModal = (id?: string) => {
     if (!id) return;
     setIsStatusModalOpen(true);
   };
@@ -174,7 +174,7 @@ const Actions: React.FC<ActionsProps> = ({
       )}
       {operationsAllowed?.invoice && (
         <button
-          onClick={() => handleInvoice(row.id)}
+          onClick={() => handleStatusModal(row.id)}
           className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
         >
           <FaFileInvoiceDollar title="View Stock" />
@@ -182,7 +182,7 @@ const Actions: React.FC<ActionsProps> = ({
       )}
       {operationsAllowed?.updateStatus && (
         <button
-          onClick={() => handleLeadsStaus(row.id, row)}
+          onClick={() => handleStatusModal(row.id)}
           className="text-green-700 ml-1 text-xl hover:scale-125 hover:p-1 hover:bg-green-100 p-1 rounded transition"
         >
           <RxUpdate title="View Loan Status" />
