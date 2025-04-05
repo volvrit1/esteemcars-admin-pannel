@@ -1,7 +1,6 @@
 "use client";
 
 import Profile from "./Profile";
-import Notification from "./Notification";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import DarkLightToggle from "./DarkLightToggle";
@@ -54,7 +53,7 @@ const Navbar: React.FC = () => {
             </div>
             <div className="flex w-1/3 text-iconBlack justify-end items-center gap-2">
               <DarkLightToggle />
-              <Notification />
+              {/* <Notification /> */}
               <FullScreenButton />
               <Profile />
             </div>

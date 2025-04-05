@@ -2,14 +2,12 @@
 
 import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
-
-import ImageUpload from "../common/ImageUpload";
-
-import { FormEvent, ChangeEvent, useState, useEffect } from "react";
+import { FormEvent, ChangeEvent, useState } from "react";
 import { endpoints } from "../../data/endpoints";
 import { Put, Post, Fetch } from "../../hooks/apiUtils";
-import { IoAdd, IoCheckmark, IoTrash } from "react-icons/io5";
+import { IoAdd, IoTrash } from "react-icons/io5";
 import dayjs from "dayjs";
+import SingleImageUploader from "../input/ImageUploader";
 
 const RichTextEditor = dynamic(() => import("../common/RichTextEditor"), {
   ssr: false,
@@ -59,7 +57,7 @@ const blogPlaceholder = {
 const BlogForm: React.FC<BlogFormProps> = (props) => {
   const data = props.data;
   const meta = data?.metaKeywords?.map((meta, index) => {
-    return { id: index+1, text: meta };
+    return { id: index + 1, text: meta };
   });
   const [items, setItems] = useState<any>(meta || []);
   const [keywords, setKeywords] = useState<string[]>([]);
@@ -120,14 +118,13 @@ const BlogForm: React.FC<BlogFormProps> = (props) => {
   //   setItems(items.filter((item) => item.id !== id));
   // };
 
-
   const removeItem = (id: number) => {
     // Remove the item from the items array
     const updatedItems = items.filter((item) => item.id !== id);
-    
+
     // Update the items state
     setItems(updatedItems);
-  
+
     // Update the keywords state based on the updated items
     setKeywords(updatedItems.map((item) => item.text));
   };
@@ -214,7 +211,7 @@ const BlogForm: React.FC<BlogFormProps> = (props) => {
             name="date"
             placeholder={blogPlaceholder?.date}
             onChange={handleChange}
-            value={dayjs(form.date).format('YYYY-MM-DD')}
+            value={dayjs(form.date).format("YYYY-MM-DD")}
             className="p-2 border border-gray-300 !autofill:bg-transparent rounded-lg outline-none"
           />
         </div>
@@ -317,16 +314,19 @@ const BlogForm: React.FC<BlogFormProps> = (props) => {
           </button>
         </div>
         <div className="flex flex-col col-span-2">
-          <label
-            htmlFor="isActive"
-            className="mb-2 font-semibold text-gray-700"
-          >
-            Please upload a image
-          </label>
-          <ImageUpload
+          {/* <ImageUpload
             setState={setForm}
             fieldname="coverImage"
             data={form.coverImage}
+          /> */}
+          <SingleImageUploader
+            field={{
+              name: "coverImage",
+              label: "Please upload a image",
+              value: form?.coverImage,
+              required: true,
+            }}
+            setFormData={setForm}
           />
         </div>
       </div>
