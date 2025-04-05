@@ -25,7 +25,7 @@ export const BannersType: FormField[] = [
   {
     name: "mobile",
     type: "choose",
-    required: true,
+    required: false,
     label: "Mobile Image",
     max: 5,
     placeholder: "Enter mobile",
