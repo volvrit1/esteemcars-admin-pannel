@@ -8,7 +8,13 @@ const options = [
   { value: "Eligible", label: "Eligible" },
   { value: "Not Eligible", label: "Not Eligible" },
   { value: "Pending", label: "Pending" },
+  { value: "Lost", label: "Lost" },
+  { value: "Working", label: "Working" },
+  { value: "Progress", label: "Progress" },
+  { value: "No Response", label: "No Response" },
+  { value: "Won", label: "Won" },
 ];
+
 
 export default function UpdateLeadsStatusModal({
   id,

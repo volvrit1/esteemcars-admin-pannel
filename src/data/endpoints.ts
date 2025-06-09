@@ -129,6 +129,46 @@ export const endpoints: Record<
     fetchAll: "api/loan-application?status=Eligible", // to fetch all leads
     operations: operations,
   },
+  Lost: {
+    create: "api/loan-application",
+    read: "api/loan-application/",
+    update: "api/loan-application/",
+    delete: "api/loan-application/",
+    fetchAll: "api/loan-application?status=Lost",
+    operations: operations,
+  },
+  Working: {
+    create: "api/loan-application",
+    read: "api/loan-application/",
+    update: "api/loan-application/",
+    delete: "api/loan-application/",
+    fetchAll: "api/loan-application?status=Working",
+    operations: operations,
+  },
+  Progress: {
+    create: "api/loan-application",
+    read: "api/loan-application/",
+    update: "api/loan-application/",
+    delete: "api/loan-application/",
+    fetchAll: "api/loan-application?status=Progress",
+    operations: operations,
+  },
+  NoResponse: {
+    create: "api/loan-application",
+    read: "api/loan-application/",
+    update: "api/loan-application/",
+    delete: "api/loan-application/",
+    fetchAll: "api/loan-application?status=No Response",
+    operations: operations,
+  },
+  Won: {
+    create: "api/loan-application",
+    read: "api/loan-application/",
+    update: "api/loan-application/",
+    delete: "api/loan-application/",
+    fetchAll: "api/loan-application?status=Won",
+    operations: operations,
+  },
   Loan: {
     create: "api/loan-query", // to create a lead
     read: "api/loan-query/", // to get a lead

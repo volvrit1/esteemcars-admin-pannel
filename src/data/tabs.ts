@@ -138,6 +138,42 @@ export const tabs = [
         href: "/dashboard/not-eligible-leads",
         permission: "Manage Lead Status",
       },
+      {
+        id: 23,
+        icon: MdOutlineContactSupport,
+        label: "Lost Leads",
+        href: "/dashboard/lost-leads",
+        permission: "Manage Lead Status",
+      },
+      {
+        id: 24,
+        icon: MdOutlineContactSupport,
+        label: "Working Leads",
+        href: "/dashboard/working-leads",
+        permission: "Manage Lead Status",
+      },
+      {
+        id: 25,
+        icon: MdOutlineContactSupport,
+        label: "Progress Leads",
+        href: "/dashboard/progress-leads",
+        permission: "Manage Lead Status",
+      },
+      {
+        id: 26,
+        icon: MdOutlineContactSupport,
+        label: "No Response Leads",
+        href: "/dashboard/no-response-leads",
+        permission: "Manage Lead Status",
+      },
+      {
+        id: 27,
+        icon: MdOutlineContactSupport,
+        label: "Won Leads",
+        href: "/dashboard/won-leads",
+        permission: "Manage Lead Status",
+      },
+
     ],
   },
   {

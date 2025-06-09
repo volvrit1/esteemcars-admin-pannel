@@ -220,17 +220,29 @@ const Table: React.FC<TableProps> = ({
                       </span>
                     ) : col.isStatus ? (
                       <span
-                        className={`flex justify-center items-center rounded-md ${
-                          formatRowValue(row, col) === "Approved"
-                            ? "bg-green-50 text-green-600"
-                            : formatRowValue(row, col) === "In Progress"
-                            ? "bg-yellow-50 text-yellow-600"
-                            : formatRowValue(row, col) === "Pending"
-                            ? "bg-yellow-50 text-yellow-600"
-                            : formatRowValue(row, col) === "Eligible"
-                            ? "bg-green-50 text-green-600"
-                            : "bg-red-50 text-red-600"
-                        } px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset`}
+                        className={`flex justify-center items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+                          {
+                            Approved:
+                              "bg-green-50 text-green-600 ring-gray-500/10",
+                            "In Progress":
+                              "bg-yellow-50 text-yellow-600 ring-gray-500/10",
+                            Pending:
+                              "bg-yellow-50 text-yellow-600 ring-gray-500/10",
+                            Eligible:
+                              "bg-green-50 text-green-600 ring-gray-500/10",
+                            "Not Eligible":
+                              "bg-red-50 text-red-600 ring-gray-500/10",
+                            Lost: "bg-red-50 text-red-600 ring-gray-500/10",
+                            Working:
+                              "bg-blue-50 text-blue-600 ring-gray-500/10",
+                            Progress:
+                              "bg-yellow-50 text-yellow-600 ring-gray-500/10",
+                            "No Response":
+                              "bg-gray-50 text-gray-600 ring-gray-500/10",
+                            Won: "bg-green-100 text-green-700 ring-gray-500/10",
+                          }[formatRowValue(row, col)] ||
+                          "bg-gray-50 text-gray-600 ring-gray-500/10"
+                        }`}
                       >
                         {formatRowValue(row, col)}
                       </span>
