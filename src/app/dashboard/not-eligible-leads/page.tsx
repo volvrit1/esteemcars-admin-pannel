@@ -23,7 +23,7 @@ const columns = [
   { key: "loanAmount", label: "Loan Amount", sortable: true },
   { key: "weeklyPayment", label: "Weekly Payment", sortable: true },
   { key: "createdAt", label: "Created At", sortable: true, isDate: true },
-  { key: "updatedAt", label: "Last Updates", sortable: true, isDate: true },
+  { key: "updatedAt", label: "Last Updated", sortable: true, isDate: true },
 ];
 
 const filterOptions = [
