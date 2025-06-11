@@ -236,7 +236,7 @@ const Table: React.FC<TableProps> = ({
                             Working:
                               "bg-blue-50 text-blue-600 ring-gray-500/10",
                             Progress:
-                              "bg-yellow-50 text-yellow-600 ring-gray-500/10",
+                              "bg-orange-50 text-orange-600 ring-gray-500/10",
                             "No Response":
                               "bg-gray-50 text-gray-600 ring-gray-500/10",
                             Won: "bg-green-100 text-green-700 ring-gray-500/10",
